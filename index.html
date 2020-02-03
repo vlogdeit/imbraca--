@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Imbraca ?</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popmotion/4.3.4/popmotion.global.js" integrity="sha256-jLproaFqYwrooJZ1S5EOEmBX8RMWZwRh8/4DI+n4JWE=" crossorigin="anonymous"></script>
+<style>
+	@keyframes move {
+	  from {left: 0;}
+	  to {left: calc(100% - 20vw);}
+	}	
+
+	body{
+		padding:0;
+		margin:0;
+	}
+
+	.head{
+		position: relative;
+		width: 20vw;
+		animation-name: move;
+  	animation-duration: 10s;
+  	animation-delay: 0s;
+  	animation-direction: alternate-reverse;
+  	animation-timing-function: linear;
+  	animation-iteration-count: infinite;
+  	position:absolute; 
+  	left:0; 
+  	top:0; 
+  	width:auto;
+	}
+
+	.body{
+		position:relative; 
+		left:calc(50vw - 168px); 
+		top:0
+	}
+
+	.controls{
+		width:100%;
+		text-align: center;
+	}
+
+	.controls button{
+		padding: 10px;
+		font-size: 20px;
+		clear:both;
+	}
+</style>
+</head>
+<body>
+
+<div class="game">
+	<img class="body" src="bg.png" />
+	<img class="head" src="head.png" />
+</div>
+
+
+<div class="controls">
+	<button onclick="stop()" />Stop</button>
+	<button onclick="play()" />Play</button>
+</div>
+
+
+
+
+
+<script>
+	function stop(){
+		document.querySelector(".head").style.animationPlayState = "paused";
+
+		const initialWidth = document.body.clientWidth;
+		pos = document.querySelector(".head").offsetLeft;
+		val = Math.round((pos * 100)/initialWidth);
+	}
+
+	function play(){
+		document.querySelector(".head").style.animationPlayState = "running";
+	}
+</script>
+</body>
+</html>
